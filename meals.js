@@ -12,11 +12,11 @@ const meals = [
     image: "img/ghormesabzi.jpg",
     description: "Fasulye, kuru limon ve yeşil otlarla yapılan İran mutfağının vazgeçilmezi.",
     author: "Ninemin tarifi",
-    link: "ghormeh.html"
+    link: "ghormesabzi.html"
   },
   {
     name: "کباب کوبیده (Kabab Koobideh)",
-    image: "img/kabab.jpg",
+    image: "img/kebab.jpg",
     description: "Kıyma, soğan ve baharatla hazırlanan ve şişte pişirilen meşhur İran kebabı.",
     author: "Usta kebapçıdan",
     link: "koobideh.html"

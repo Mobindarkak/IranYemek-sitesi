@@ -18,47 +18,54 @@
     <p class="mt-2 text-gray-600">Geleneksel tatlarla mutfağınıza lezzet katın 🍽️</p>
   </header>
 
-  <main class="flex flex-wrap justify-center w-11/12 gap-6">
-    <!-- Fesenjan -->
-    <section class="bg-white border-2 border-green-300 p-4 flex flex-col items-center gap-4 rounded-tr-2xl rounded-bl-2xl sm:w-80 hover:shadow-lg">
-      <img class="w-full aspect-[4/3] object-cover rounded-tl-2xl rounded-br-2xl opacity-80 hover:opacity-100" src="img/fesenjan.jpg" alt="Fesenjan">
-      <h3 class="font-bold">فسنجان (Fesenjan)</h3>
-      <p>Nar ekşisi ve cevizle yapılan, genellikle tavukla servis edilen geleneksel İran yemeği.</p>
-      <p class="text-sm text-gray-500">Tarif: Anne usulü</p>
-      <a href="fesenjan.html" class="text-green-700 underline hover:text-green-900">Tarifi Gör</a>
+  <section class="w-full max-w-2xl px-4 mb-6">
+  <input 
+    type="text"
+    id="searchInput"
+    placeholder="Yemek ara..."
+    class="w-full p-3 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+  />
+</section>
 
-    </section>
-
-    <!-- Ghormeh Sabzi -->
-    <section class="bg-white border-2 border-green-300 p-4 flex flex-col items-center gap-4 rounded-tr-2xl rounded-bl-2xl sm:w-80 hover:shadow-lg">
-      <img class="w-full aspect-[4/3] object-cover rounded-tl-2xl rounded-br-2xl opacity-80 hover:opacity-100" src="img/ghormesabzi.jpg" alt="Ghormeh Sabzi">
-      <h3 class="font-bold">قورمه سبزی (Ghormeh Sabzi)</h3>
-      <p>Fasulye, kuru limon ve yeşil otlarla yapılan İran mutfağının vazgeçilmezi.</p>
-      <p class="text-sm text-gray-500">Tarif: Ninemin tarifi</p>
-      <a href="ghormesabzi.html" class="text-green-700 underline hover:text-green-900">Tarifi Gör</a>
-
-    </section>
-
-    <!-- Kabab Koobideh -->
-    <section class="bg-white border-2 border-green-300 p-4 flex flex-col items-center gap-4 rounded-tr-2xl rounded-bl-2xl sm:w-80 hover:shadow-lg">
-      <img class="w-full aspect-[4/3] object-cover rounded-tl-2xl rounded-br-2xl opacity-80 hover:opacity-100" src="img/kebab.jpg" alt="Kabab Koobideh">
-      <h3 class="font-bold">کباب کوبیده (Kabab Koobideh)</h3>
-      <p>Kıyma, soğan ve baharatla hazırlanan ve şişte pişirilen meşhur İran kebabı.</p>
-      <p class="text-sm text-gray-500">Tarif: Usta kebapçıdan</p>
-      <a href="kebab.html" class="text-green-700 underline hover:text-green-900">Tarifi Gör</a>
-
-    </section>
-
-    <!-- Tahchin -->
-    <section class="bg-white border-2 border-green-300 p-4 flex flex-col items-center gap-4 rounded-tr-2xl rounded-bl-2xl sm:w-80 hover:shadow-lg">
-      <img class="w-full aspect-[4/3] object-cover rounded-tl-2xl rounded-br-2xl opacity-80 hover:opacity-100" src="img/tahchin.jpg" alt="Tahchin">
-      <h3 class="font-bold">ته چین (Tahchin)</h3>
-      <p>Safran, yoğurt ve tavukla yapılan, fırında pişen altın renkli pilav yemeği.</p>
-      <p class="text-sm text-gray-500">Tarif: Safran kokulu</p>
-      <a href="tahchin.html" class="text-green-700 underline hover:text-green-900">Tarifi Gör</a>
-
-    </section>
+  <main id="meal-container" class="flex flex-wrap justify-center w-11/12 gap-6">
   </main>
+
+<script src="meals.js"></script>
+<script>
+  const container = document.getElementById('meal-container');
+  const searchInput = document.getElementById('searchInput');
+
+  function renderMeals(filteredMeals) {
+    container.innerHTML = ""; // önce temizle
+    filteredMeals.forEach(meal => {
+      const card = document.createElement('section');
+      card.className = "bg-white border-2 border-green-300 p-4 flex flex-col items-center gap-4 rounded-tr-2xl rounded-bl-2xl sm:w-80 hover:shadow-lg";
+
+      card.innerHTML = `
+        <img class="w-full aspect-[4/3] object-cover rounded-tl-2xl rounded-br-2xl opacity-80 hover:opacity-100" src="${meal.image}" alt="${meal.name}">
+        <h3 class="font-bold text-center">${meal.name}</h3>
+        <p class="text-sm text-center">${meal.description}</p>
+        <p class="text-xs text-gray-500">${meal.author}</p>
+        <a href="${meal.link}" class="text-green-700 underline hover:text-green-900">Tarifi Gör</a>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  // Başlangıçta tüm yemekleri göster
+  renderMeals(meals);
+
+  // Filtreleme işlemi
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const filtered = meals.filter(meal =>
+      meal.name.toLowerCase().includes(query) ||
+      meal.description.toLowerCase().includes(query)
+    );
+    renderMeals(filtered);
+  });
+</script>
+
 
   <footer class="mt-10 mb-4 text-gray-500">
     <p>&copy; 2025 İran Mutfağı - Tüm hakları saklıdır</p>
