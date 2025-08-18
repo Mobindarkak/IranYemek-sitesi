@@ -18,6 +18,12 @@
     <p class="mt-2 text-gray-600">Geleneksel tatlarla mutfağınıza lezzet katın 🍽️</p>
   </header>
 
+   <div class="flex justify-end w-full max-w-2xl px-4 mb-2">
+  <button id="langToggle" class="border  bg-white text-sm text-green-800  rounded-lg font-bold hover:bg-green-100">
+    Change Language
+  </button>
+</div>
+
   <section class="w-full max-w-2xl px-4 mb-6">
   <input 
     type="text"
@@ -34,35 +40,44 @@
 <script>
   const container = document.getElementById('meal-container');
   const searchInput = document.getElementById('searchInput');
+  const langToggle = document.getElementById('langToggle');
 
-  function renderMeals(filteredMeals) {
-    container.innerHTML = ""; // önce temizle
-    filteredMeals.forEach(meal => {
+  let currentLang = 'tr';
+
+  function renderMeals(data) {
+    container.innerHTML = "";
+    data.forEach(meal => {
       const card = document.createElement('section');
       card.className = "bg-white border-2 border-green-300 p-4 flex flex-col items-center gap-4 rounded-tr-2xl rounded-bl-2xl sm:w-80 hover:shadow-lg";
-
       card.innerHTML = `
         <img class="w-full aspect-[4/3] object-cover rounded-tl-2xl rounded-br-2xl opacity-80 hover:opacity-100" src="${meal.image}" alt="${meal.name}">
         <h3 class="font-bold text-center">${meal.name}</h3>
         <p class="text-sm text-center">${meal.description}</p>
         <p class="text-xs text-gray-500">${meal.author}</p>
-        <a href="${meal.link}" class="text-green-700 underline hover:text-green-900">Tarifi Gör</a>
+        <a href="${meal.link}" class="text-green-700 underline hover:text-green-900">${currentLang === 'tr' ? 'Tarifi Gör' : 'مشاهده دستور'}</a>
       `;
       container.appendChild(card);
     });
   }
 
-  // Başlangıçta tüm yemekleri göster
-  renderMeals(meals);
+  // İlk gösterim
+  renderMeals(meals_tr);
 
-  // Filtreleme işlemi
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.toLowerCase();
+    const meals = currentLang === 'tr' ? meals_tr : meals_fa;
     const filtered = meals.filter(meal =>
       meal.name.toLowerCase().includes(query) ||
       meal.description.toLowerCase().includes(query)
     );
     renderMeals(filtered);
+  });
+
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === 'tr' ? 'fa' : 'tr';
+    searchInput.placeholder = currentLang === 'tr' ? " 🔍 Yemek ara..." :"🔍جستجوی غذا...";
+    renderMeals(currentLang === 'tr' ? meals_tr : meals_fa);
+    searchInput.value = ''; // arama kutusunu sıfırla
   });
 </script>
 
