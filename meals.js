@@ -2,6 +2,7 @@
 
 const meals_tr = [
   {
+    id: "fesenjan",
     name: "Fesenjan",
     image: "img/fesenjan.jpg",
     description: "Nar ekşisi ve cevizle yapılan, genellikle tavukla servis edilen geleneksel İran yemeği.",
@@ -9,13 +10,15 @@ const meals_tr = [
     link: "fesenjan.html"
   },
   {
+    id:"ghorme",
     name: "Ghormeh Sabzi",
     image: "img/ghormesabzi.jpg",
     description: "Fasulye, kuru limon ve yeşil otlarla yapılan İran mutfağının vazgeçilmezi.",
-    author: "Ninemin tarifi",
+    author: "Anne usulü",
     link: "ghormesabzi.html"
   },
   {
+    id:"kabab",
     name: "Kabab Koobideh",
     image: "img/kebab.jpg",
     description: "Kıyma, soğan ve baharatla hazırlanan ve şişte pişirilen meşhur İran kebabı.",
@@ -23,16 +26,18 @@ const meals_tr = [
     link: "kebab.html"
   },
   {
+    id:"tahchin",
     name: "Tahchin",
     image: "img/tahchin.jpg",
     description: "Safran, yoğurt ve tavukla yapılan, fırında pişen altın renkli pilav yemeği.",
-    author: "Safran kokulu",
+    author: "Anne usulü",
     link: "tahchin.html"
   }
 ];
 
 const meals_fa = [
   {
+    id: 'fesenjan',
     name: "فسنجان",
     image: "img/fesenjan.jpg",
     description: "خورشتی سنتی با گردو و رب انار که اغلب با مرغ سرو می‌شود.",
@@ -40,13 +45,15 @@ const meals_fa = [
     link: "fesenjan.html"
   },
   {
+    id:"ghorme",
     name: "قورمه سبزی",
     image: "img/ghormesabzi.jpg",
     description: "خورشتی خوش‌عطر با سبزی‌های معطر، لوبیا و لیمو عمانی.",
-    author: "دستور مادربزرگ",
+    author: "مادرانه",
     link: "ghormesabzi.html"
   },
   {
+    id:"kabab",
     name: "کباب کوبیده",
     image: "img/kebab.jpg",
     description: "کباب ایرانی تهیه‌شده از گوشت چرخ‌کرده، پیاز و ادویه‌ها.",
@@ -54,10 +61,11 @@ const meals_fa = [
     link: "kebab.html"
   },
   {
+    id:"tahchin",
     name: "ته چین",
     image: "img/tahchin.jpg",
     description: "پلو زعفرانی با مرغ که در فر پخته می‌شود و ته‌دیگ طلایی دارد.",
-    author: "زعفران‌دار",
+    author: "مادرانه",
     link: "tahchin.html"
   }
 ];

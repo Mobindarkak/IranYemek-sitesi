@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Favorilerim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Vazirmatn', sans-serif; }
+  </style>
+</head>
+<body class="bg-lime-50 min-h-screen flex flex-col items-center py-10 px-4">
+
+  <h1 class="text-2xl font-bold text-green-700 mb-6">❤️ Favori Tariflerim</h1>
+
+  <div id="favorites-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
+    <!-- Favoriler buraya JS ile yüklenecek -->
+  </div>
+
+  <a href="index.html" class="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 mt-10 rounded transition">
+      ⬅️ Ana Sayfaya Dön
+    </a>
+
+  <script src="meals.js"></script>
+  <script>
+    const container = document.getElementById("favorites-container");
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    const allMeals = meals_tr; // ya da dil seçimine göre değiştirilebilir
+
+    const favoriteMeals = allMeals.filter(meal => favorites.includes(meal.id));
+
+    if (favoriteMeals.length === 0) {
+      container.innerHTML = `<p class="text-gray-500 col-span-full">Favori listen boş 🤷‍♂️</p>`;
+    } else {
+      favoriteMeals.forEach(meal => {
+        const card = document.createElement("div");
+        card.className = "bg-white border border-green-300 rounded-lg p-4 shadow hover:shadow-md transition";
+
+        card.innerHTML = `
+          <img src="${meal.image}" alt="${meal.name}" class="w-full h-40 object-cover rounded mb-3">
+          <h3 class="font-bold text-lg">${meal.name}</h3>
+          <p class="text-sm text-gray-600 mb-2">${meal.description.substring(0, 70)}...</p>
+          <a href="${meal.link}" class="text-green-700 underline text-sm">Tarife Git →</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
