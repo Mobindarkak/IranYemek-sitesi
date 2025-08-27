@@ -43,6 +43,7 @@ const meals_fa = [
     description: "خورشتی سنتی با گردو و رب انار که اغلب با مرغ سرو می‌شود.",
     author: "مادرانه",
     link: "fesenjan.html"
+    
   },
   {
     id:"ghorme",
