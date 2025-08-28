@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Vazirmatn', sans-serif; }
+  </style>
+  <title>juje kebab Tarifi</title>
+</head>
+<body class="bg-amber-50 text-gray-800 flex flex-col items-center p-6">
+
+  <h1 class="text-3xl font-bold text-center text-green-700 mb-4"> (juje kebab)</h1>
+  <img src="../img/juje.jpg" alt="dolme" class="w-full max-w-xl rounded-lg shadow-lg mb-6"/>
+
+  <section class="max-w-xl text-right w-full">
+    <h2 class="text-xl font-semibold text-green-800 mb-2">مواد لازم:</h2>
+    <ul class="list-disc pr-6 mb-4">
+      <li></li>
+      <li>yapilmasi gereken</li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <h2 class="text-xl font-semibold text-green-800 mb-2">طرز تهیه:</h2>
+    <p class="mb-6 leading-relaxed">
+        juje kabab nasil yapilir
+    </p>
+
+    <a href="../index.html" class="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition">
+      ⬅️ Ana Sayfaya Dön
+    </a>
+</section>
+
+<section id="yorumlar" class="mt-10 w-full max-w-xl mx-auto">
+  <h2 class="text-xl font-bold mb-4 text-green-800">Yorumlar</h2>
+  <form id="yorumForm" class="mb-6">
+    <input id="yorumYazan" type="text" placeholder="Adınız" required
+           class="w-full mb-2 p-2 border border-green-300 rounded" />
+    <textarea id="yorumMetni" rows="3" placeholder="Yorumunuzu yazın..." required
+              class="w-full mb-2 p-2 border border-green-300 rounded"></textarea>
+    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+      Yorumu Gönder
+    </button>
+  </form>
+  <div id="yorumListesi" class="space-y-3"></div>
+</section>
+<script type="module" src="../yorum.js"></script>
+
+
+</body>
+</html>
